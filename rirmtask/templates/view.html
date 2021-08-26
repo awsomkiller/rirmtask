@@ -17,6 +17,7 @@
           </button>
         </div>
       </nav>
+      {% if user.is_authenticated %}
       {% if data %}
       <p>
         {% for entry in datalist%}
@@ -54,6 +55,30 @@
         {% endfor %}
       {% else %}
       <H4>No Data</H4>
+      {% endif %}
+      {% else %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Class</th>
+            <th scope="col">School Name</th>
+            <th scope="col">Mobile</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in student%}
+          <tr>
+            <th scope="row">{{s.roll_number}}</th>
+            <td>{{s.name}}</td>
+            <td>{{s.student_class}}</td>
+            <td>{{s.school_name}}</td>
+            <td>{{s.mobile}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
       {% endif %}
     <!-- Optional JavaScript; choose one of the two! -->
 
